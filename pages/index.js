@@ -63,7 +63,7 @@ export default function Home() {
           handleWorkScroll={handleWorkScroll}
           handleAboutScroll={handleAboutScroll}
         />
-        <div className="laptop:mt-20 mt-10">
+        <div className="laptop:mt-20 mt-10 ml-3">
           <div className="mt-5">
             <h1
               ref={textOne}
@@ -94,7 +94,7 @@ export default function Home() {
           <Socials className="mt-2 laptop:mt-5" />
         </div>
         <div className="mt-10 laptop:mt-30 p-2 laptop:p-0" ref={workRef}>
-          <h1 className="text-2xl text-bold">Work.</h1>
+          <h1 className="ml-5 text-2xl text-bold">Work.</h1>
 
           <div className="mt-5 laptop:mt-10 grid grid-cols-1 tablet:grid-cols-2 gap-4">
             {data.projects.map((project) => (
@@ -109,8 +109,12 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="mt-10 laptop:mt-30 p-2 laptop:p-0">
-          <h1 className="tablet:m-10 text-2xl text-bold">Services.</h1>
+        <div
+          className={`mt-10 laptop:mt-30 p-2 laptop:p-0  ${
+            data.services.length == 0 && "hidden"
+          }`}
+        >
+          <h1 className={`tablet:m-10 text-2xl text-bold`}>Services.</h1>
           <div className="mt-5 tablet:m-10 grid grid-cols-1 laptop:grid-cols-2 gap-6">
             {data.services.map((service, index) => (
               <ServiceCard
@@ -129,11 +133,18 @@ export default function Home() {
             </Link>
           </div>
         )}
-        <div className="mt-10 laptop:mt-40 p-2 laptop:p-0" ref={aboutRef}>
-          <h1 className="tablet:m-10 text-2xl text-bold">About.</h1>
-          <p className="tablet:m-10 mt-2 text-xl laptop:text-3xl w-full laptop:w-3/5">
-            {data.aboutpara}
-          </p>
+        <div className="mt-10 laptop:mt-40 p-2 laptop:p-0 " ref={aboutRef}>
+          <h1 className="tablet:m-5 text-2xl text-bold">About.</h1>
+          <div className="flex items-center flex-col-reverse ">
+            <p className="tablet:m-5 mt-2 text-xl laptop:text-xl w-full laptop:w-3/5">
+              {data.aboutpara}
+            </p>
+            <img
+              src="images/profileImage.jpeg"
+              alt="Profile"
+              className="rounded-full tablet:w-96 tablet:h-96 object-cover w-11/12 h-auto "
+            />
+          </div>
         </div>
         <Footer />
       </div>
